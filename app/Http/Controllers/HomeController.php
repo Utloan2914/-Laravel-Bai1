@@ -6,5 +6,17 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){}
+    //Action index()
+    public function index(){
+        return 'Home';
+    }
+
+    //Action getNews()
+    public function getNews(){
+        return 'Danh sách tin tức';
+    }
+
+    public function getCategories(){
+        return 'Chuyên mục';
+    }
 }
