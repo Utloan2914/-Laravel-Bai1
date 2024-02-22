@@ -16,7 +16,7 @@ class HomeController extends Controller
         return 'Danh sách tin tức';
     }
 
-    public function getCategories(){
-        return 'Chuyên mục';
+    public function getCategories($id){
+        return 'Chuyên mục'.$id;
     }
 }
