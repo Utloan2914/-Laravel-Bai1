@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CategoriesController;
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,10 @@ use App\Http\Controllers\CategoriesController;
 |
 */
 //Client Route
+
+Route::get('/', function(){
+    return '<h1 style="text-align: center;>Trang chủ unicode</h1>';
+})->name('home');
 Route ::prefix('categories')->group(function (){
 
     //Danh sách chuyên mục
@@ -38,7 +43,12 @@ Route ::prefix('categories')->group(function (){
 });
 
     //Admin route
-    Route::prefix('admin')->group(function () {
-        Route::resource('products', ProductsController::class);
-    }
-);
+    // Route::prefix('admin')->group(function () {
+    //     Route::get('/', [DashboardController::class, 'index']);
+    //     Route::resource('products', ProductsController::class);
+    // });
+
+    Route::middleware('auth.admin')->prefix('admin')->group(function () {
+        Route::get('/', [DashboardController::class, 'index']);
+        Route::resource('products', ProductsController::class)->middleware('auth.admin.product');
+    });
