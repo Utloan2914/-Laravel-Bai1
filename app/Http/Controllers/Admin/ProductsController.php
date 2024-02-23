@@ -1,11 +1,18 @@
 <?php
-    namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin;
 
-    use App\Http\Controllers\Controller; 
-    use Illuminate\Http\Request;
+use App\Http\Controllers\Controller; 
+use Illuminate\Http\Request;
 
-    class ProductsController extends Controller 
-    {
+class ProductsController extends Controller 
+{
+
+    public function __construct(){
+        //echo 'Product khởi động';
+        //Sử dụng sesion để check login
+    }
+    
+    
     /**
     * Display a listing of the resource.
     * 
