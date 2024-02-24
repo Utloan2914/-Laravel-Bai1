@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +19,7 @@ use App\Http\Controllers\CategoriesController;
 */
 //Client Route
 
-Route::get('/', function(){
-    return '<h1 style="text-align: center;>Trang chủ unicode</h1>';
-})->name('home');
+Route::get('/', [HomeController::class, 'index'] )->name('home');
 Route ::prefix('categories')->group(function (){
 
     //Danh sách chuyên mục
@@ -41,6 +40,9 @@ Route ::prefix('categories')->group(function (){
     //Xóa chuyên mục
     Route::delete('/delete/{id}', [CategoriesController::class,'deleteCategory'])->name('categories.delete');
 });
+
+Route::get('san-pham/{id}', [HomeController::class, 'getProductDetail']);
+
 
     //Admin route
     // Route::prefix('admin')->group(function () {
