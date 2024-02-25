@@ -19,8 +19,8 @@ use App\Http\Controllers\HomeController;
 */
 //Client Route
 
-Route::get('/', [HomeController::class, 'index'] )->name('home');
-Route ::prefix('categories')->group(function (){
+Route::get('/', [HomeController::class, 'index'] )->name('home')->middleware('auth.adnmin');
+Route ::middleware('auth.admin')->prefix('categories')->group(function (){
 
     //Danh sách chuyên mục
     Route::get('/',[CategoriesController::class, 'index'])->name('categories.list');
