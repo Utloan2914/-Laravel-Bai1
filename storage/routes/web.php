@@ -19,8 +19,8 @@ use App\Http\Controllers\HomeController;
 */
 //Client Route
 
-Route::get('/', [HomeController::class, 'index'] )->name('home');
-Route ::prefix('categories')->group(function (){
+Route::get('/', [HomeController::class, 'index'] )->name('home')->middleware('auth.adnmin');
+Route ::middleware('auth.admin')->prefix('categories')->group(function (){
 
     //Danh sách chuyên mục
     Route::get('/',[CategoriesController::class, 'index'])->name('categories.list');
@@ -39,6 +39,14 @@ Route ::prefix('categories')->group(function (){
 
     //Xóa chuyên mục
     Route::delete('/delete/{id}', [CategoriesController::class,'deleteCategory'])->name('categories.delete');
+
+    //Hiển thị form upload
+    Route::get('/upload',[CategoriesController::class,'getFile']); 
+
+    //Xử lý file
+    Route::post('/upload',[CategoriesController::class,'handleFile'])->name('categories.upload'); 
+
+  
 });
 
 Route::get('san-pham/{id}', [HomeController::class, 'getProductDetail']);
