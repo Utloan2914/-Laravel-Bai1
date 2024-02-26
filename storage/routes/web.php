@@ -39,6 +39,14 @@ Route ::middleware('auth.admin')->prefix('categories')->group(function (){
 
     //Xóa chuyên mục
     Route::delete('/delete/{id}', [CategoriesController::class,'deleteCategory'])->name('categories.delete');
+
+    //Hiển thị form upload
+    Route::get('/upload',[CategoriesController::class,'getFile']); 
+
+    //Xử lý file
+    Route::post('/upload',[CategoriesController::class,'handleFile'])->name('categories.upload'); 
+
+  
 });
 
 Route::get('san-pham/{id}', [HomeController::class, 'getProductDetail']);
