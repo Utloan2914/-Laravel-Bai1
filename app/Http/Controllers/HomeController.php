@@ -7,40 +7,18 @@ use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
-    //Action index()
+    public $data =[];
     public function index(){
-        //return 'Home';
-        $title ="Hoc lap trinh web tai Unicode";
-        $content = 'Hoc lap trinh Laravel 8.x tai Unicode';
-       
-        /* 
-        [
-            'title' => $title,
-            'content' => $content
-        ]
 
-        compact('title', 'content')
-        */
-        return view('home')->with(['title'=>$title, 'content'=>$content]); //load view home.php
+        $this ->data['welcome']='Học lập trình Laravel tai <b>Unicode</b>';
+        $this->data['content']='<h3>Chương 1: Nhập môn Laravel</h3>
+        <p>Kiến thức 1</p>
+        <p>Kiến thức 2</p>
+        <p>Kiến thức 3</p>';
+        $this->data ['index']= 1;
+        $this->data['dataArr'] =[];
 
-        //return View::make('home')->with(['title'=>$title, 'content'=>$content]);
-
-        // $contentView = view('home')->render();
-        // //$contentView = $contentView->render();
-        // dd($contentView);
-        // //return $contentView;
-    }
-
-    //Action getNews()
-    public function getNews(){
-        return 'Danh sách tin tức';
-    }
-
-    public function getCategories($id){
-        return 'Chuyên mục'.$id;
-    }
-
-    public function getProductDetail($id){
-        return view('clients.products.detail', compact('id'));
+        $this->data['number']= 3;
+        return view('home',$this->data);
     }
 }
