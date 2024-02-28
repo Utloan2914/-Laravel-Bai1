@@ -5,59 +5,53 @@
 <div class="container">{!! !empty($content)?$content:false !!}</div>
         
 <hr>
-<!-- @for ($i = 1 ; $ i <= 10; $i++) 
-<p>Phần tử thứ: {{$i}}</p>
-@endfor -->
+{{-- @php
+$number = 5;
+if ($number>=10){
+    $total = $number +20;
+}
+else{
+    $total = $number +10;
+}
+@endphp
+
+<h3>Kết quả: {{$number}} - {{$total}}</h3> --}}
 
 
-<!-- @while ($index<=10)
-    <p>Phần tử thứ: {{$index}}</p>
-   @php
-        $index++;
-    @endphp
-@endwhile -->
-
-
-<!-- @forelse ($dataArr as $item) 
-    <p>Phần tử: {{$item}}</p>
-@empty
-    <p>Không có phần tử nào</p>
-@endforelse -->
-
-<!-- @if ($number>=10)
-<p>Đây là giá trị hợp lệ </p>
-@else
-<p>Giá trị không hợp lệ</p>
-@endif -->
-
-
-<!-- @if ($number<0)
-<p>Số âm</p>
-@elseif (@number>=0 && $number<5)
-<p>Số siêu nhỏ</p>
-@elseif ($number>=5 && $number<10)
-<p>Số trung bình</p>
-@else
-<p>Số lớn</p>
-@endif -->
-
-
-<!-- @switch ($number)
-    @case(1)
-    @case(3)
-    @case(5)
-        <p>Số thứ nhất</p>
-        @break
-    @case(2)
-        <p>Số thứ hai</p>
-        @break
-    @default
-        <p>Số còn lại</p>
-@endswith -->
-
-@for ($i = 1;$i<=10; $i++)
-    @if ($i==5)
-        @continue
-    @endif
-    <p>Phần tử thứ: {{$i}}</p>
+<hr>
+{{--@php
+$total = 0;
+@for ($index = 0; $index<10; $index++)
+@php
+$total+=$index;
+@endphp
+<p>Phần tử: {{$index}}</p>
 @endfor
+<h3>Tổng: {{$total}}</h3> --}}
+
+
+
+
+
+{{--@php
+    for($index =0; $index<10;$index++){
+    echo '<p>Phần tử: '.$index.'</p>';
+    }
+@endphp --}}
+
+
+{{--@verbatim
+<div class="container">
+    Hello, {{className}}
+</div>
+<script>
+    Hello, {{name}}
+    Hi, {{age}}
+</script>
+@endverbatim --}}
+
+<hr>
+@php
+//$message ="Đặt hàng thành công";
+@endphp
+@include('parts.notice');
