@@ -4,29 +4,22 @@
 @endsection
 
 @section('sidebar')
-    {{-- @parent --}}
+    @parent
     <h3>Home Sidebar</h3>
 @endsection
 @section('content')
-    <h1>Home page</h1>
-    <button type="button" class="show">Show</button>
+    <h1>Trang chủ</h1>
+    @include('clients.contents.slide');
+    @include('clients.contents.about');
+
 @endsection
 
+
 @section('css')
-    <style>
-        header{
-            background:blue;
-            color:#fff;
-        }
-    </style>
+    
     
 @endsection
 
 @section('js')
-    <script>
-        document.querySelector('.show').onclick= function(){
-            alert('Thành công');
-        }
-    </script>
     
 @endsection
