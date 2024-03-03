@@ -2,37 +2,37 @@
 
 namespace App\Providers;
 
+use App\View\Components\Alert;
+use App\View\Components\Inputs\Button;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        Blade::if('env', function ($value) { //@env('local')
+        Blade::if('env', function ($value) {
             //Trả về giá trị boolean
-            if (config('app.env')===$value){
+            if (config('app.env') === $value) {
                 return true;
             }
             return false;
-            });
-    }
+        });
+
         
+        // Blade::component('package-alert', Alert::class);
+        Blade::component('button', Button::class);
     }
-
-
+}
