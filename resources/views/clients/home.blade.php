@@ -9,10 +9,22 @@
 @endsection
 @section('content')
     <h1>Trang chủ</h1>
-    @datetime('2024-3-2 17:31:00')
     @include('clients.contents.slide');
     @include('clients.contents.about');
-    @datetime("2021-11-10 00:30:30")
+    @env('production')
+    <p>
+        Môi trường production
+    </p>
+    @elseenv('test')
+    <p>
+        Môi trường test
+    </p>
+    @else
+    <p>
+        Môi trường dev
+    </p>
+    @endenv
+
 @endsection
 
 
