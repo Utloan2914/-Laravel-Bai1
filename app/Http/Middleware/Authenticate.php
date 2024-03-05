@@ -19,5 +19,3 @@ class Authenticate extends Middleware
         }
     }
 }
-
-// sử dụng lệnh % php artisan make:middleware CheckPermission để thiết lập Middleware 
