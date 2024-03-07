@@ -35,16 +35,18 @@ class Kernel extends HttpKernel
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
+            // \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            // \App\Http\Middleware\CheckLoginAdmin::class, 
+            // \App\Http\Middleware\CheckLoginAdmin::class,
+
         ],
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            // \App\Http\Middleware\AuthAPI::class,
+            // \App\Http\Middleware\AuthApi::class,
+
         ],
     ];
 
@@ -67,9 +69,10 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'checkpermission' => \App\Http\Middleware\CheckPermissrion::class,
-        'auth.admin' => \App\Http\Middleware\CheckLoginAdmin::class,
-        'api.test' => \App\Http\Middleware\AuthAPI::class,
-        'auth.admin.product' => \App\Http\Middleware\ProductsPermission::class,
+        'checkpermission'=>  \App\Http\Middleware\CheckPermission::class,
+        'auth.admin'=> \App\Http\Middleware\CheckLoginAdmin::class,
+        'auth.admin.product'=> \App\Http\Middleware\ProductPermission::class,
+
+           
     ];
 }

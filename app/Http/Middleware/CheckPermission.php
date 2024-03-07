@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckPermissrion
+class CheckPermission
 {
     /**
      * Handle an incoming request.
@@ -14,9 +14,9 @@ class CheckPermissrion
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next)
-    {   
+    {
         // $homeUrl = route('home');
-        // return redirect(($homeUrl));
+        // return redirect($homeUrl);
         return $next($request);
     }
 }
