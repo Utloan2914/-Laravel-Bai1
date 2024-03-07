@@ -6,25 +6,30 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckLoginAdmin 
+class CheckLoginAdmin
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        // echo "Middleware request cho những thằng là admin";
+        // echo 'Middleware Request';
         if (!$this->isLogin()){
-            return redirect(route('homepage'));
+            return redirect(route('home'));
         }
-        if ($request->is('admin/*') || ($request->is('admin'))){
-            echo '<h3>Khu quản trị</h3>';
-        }
+
+        // if($request->is('admin')){
+        //     echo 'Admin Area';
+        // }
+
+
         return $next($request);
     }
-    public function isLogin(){
+
+    public function isLogin (){
         return true;
     }
+
 }

@@ -21,6 +21,6 @@ class Button extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.inputs.button');
+        return view('components.button-default');
     }
 }

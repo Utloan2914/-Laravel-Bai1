@@ -1,5 +1,3 @@
 @if (!empty($message))
-    <div class="msg">
-        <p>{{$message}}</p>
-    </div>
+<h2>{{$message}}</h2>
 @endif
