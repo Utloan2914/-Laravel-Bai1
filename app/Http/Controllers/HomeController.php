@@ -5,21 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\View;
-
+use Illuminate\Support\Facades\DB;
+//use DB;
 class HomeController extends Controller
 {
     //action index
     public $data = [];
     public function index(){
-        $this->data['title'] = "Training programmer";
-        $this->data['message'] = "Register Successfull";
-
+        $this->data['title'] = "Đào tạo lập trình web";
+        $this->data['message'] = "Đăng ký tài khoản thành công";
+        $users = DB::select('SELECT * FROM users WHERE email=:email', ['email'=>'luyen.ho25@gmail.com']);
+        dd($users);
        return view('clients.home', $this->data);
+
     }
 
     public function products(){
         $this->data['title'] = "Product";
-       return view('clients.products', $this->data);
+       
+        return view('clients.products', $this->data);
 
 
     }
