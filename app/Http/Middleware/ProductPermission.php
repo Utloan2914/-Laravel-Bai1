@@ -1,19 +1,21 @@
 <?php
+
 namespace App\Http\Middleware;
+
 use Closure;
 use Illuminate\Http\Request;
-class ProductPermission
+use Symfony\Component\HttpFoundation\Response;
+
+class ProductsPermission
 {
-/**
-* Handle an incoming request.
-*
-* @param \Illuminate\Http\Request $request
-* @param \Closure $next
-* @return mixed I
-*/
-public function handle(Request $request, Closure $next)
-{
-    //echo 'Request product admin';
-    return $next($request);
-}
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+        // echo "Request products admin";
+        return $next($request);
+    }
 }

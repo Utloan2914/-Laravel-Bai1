@@ -30,8 +30,6 @@ class AppServiceProvider extends ServiceProvider
             }
             return false;
         });
-
-        
         // Blade::component('package-alert', Alert::class);
         Blade::component('button', Button::class);
     }
