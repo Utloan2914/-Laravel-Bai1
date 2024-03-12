@@ -6,7 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Response;
 use Whoops\Run;
-
+use App\Models\User;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\MyOontroller;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MyController;
+use Illuminate\Mail\Mailables\Content;
+use PhpParser\Node\Stmt\Return_;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,5 +51,27 @@ Route::post('/demo-response', function (Request $request) {
     }
     return redirect(route('demo-response'))->with('mess', 'Validate không thành công');
 });
-Route::get('download-image', [HomeController::class, 'dowloadImage'])->name('dowloadImage');
-Route::get('download-doc', [HomeController::class, 'dowloadPDF'])->name('dowloadPDF');
+Route::get('/download-image', [HomeController::class, 'dowloadImage'])->name('dowloadImage');
+Route::get('/download-doc', [HomeController::class, 'dowloadPDF'])->name('dowloadPDF');
+
+
+
+Route::prefix('/users')->name('users.')->group(function(){
+    Route::get('/',[UserController::class,'index'])->name('index');
+    Route::get('/add',[UserController::class,'add'])->name('add');
+    Route::post('/add',[UserController::class,'postAdd'])->name('post-add');
+});
+
+
+
+//bài tập 12/3
+// Route::get('/',function(){
+//     return view('home',['name'=>"Hello, Loan huynh"]);
+// })->name('home');
+
+Route::get('/pnv1', function () {
+    return view('home', ['name' => "<span><i style='color:green'>Loan</i></span>"]);
+})->name('home');
+
+
+
