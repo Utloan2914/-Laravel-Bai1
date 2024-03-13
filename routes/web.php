@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-// use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Response;
@@ -60,6 +58,7 @@ Route::prefix('/users')->name('users.')->group(function(){
     Route::post('/add',[UserController::class,'postAdd'])->name('post-add');
     Route::get('/edit/{id}',[UserController::class,'getEdit'])->name('edit');
     Route::post('/update',[UserController::class,'postEdit'])->name('post-edit');
+    Route::get('/delete/{id}',[UserController::class,'delete'])->name('delete');
 });
 
 //bài tập 12/3
@@ -70,8 +69,5 @@ Route::prefix('/users')->name('users.')->group(function(){
 Route::get('/pnv1', function () {
     return view('home', ['name' => "<span><i style='color:blue'>Loan</i></span>"]);
 })->name('home');
-
-
-
 
 
