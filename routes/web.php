@@ -54,15 +54,13 @@ Route::post('/demo-response', function (Request $request) {
 Route::get('/download-image', [HomeController::class, 'dowloadImage'])->name('dowloadImage');
 Route::get('/download-doc', [HomeController::class, 'dowloadPDF'])->name('dowloadPDF');
 
-
-
 Route::prefix('/users')->name('users.')->group(function(){
     Route::get('/',[UserController::class,'index'])->name('index');
     Route::get('/add',[UserController::class,'add'])->name('add');
     Route::post('/add',[UserController::class,'postAdd'])->name('post-add');
+    Route::get('/edit/{id}',[UserController::class,'getEdit'])->name('edit');
+    Route::post('/update',[UserController::class,'postEdit'])->name('post-edit');
 });
-
-
 
 //bài tập 12/3
 // Route::get('/',function(){
@@ -70,8 +68,10 @@ Route::prefix('/users')->name('users.')->group(function(){
 // })->name('home');
 
 Route::get('/pnv1', function () {
-    return view('home', ['name' => "<span><i style='color:green'>Loan</i></span>"]);
+    return view('home', ['name' => "<span><i style='color:blue'>Loan</i></span>"]);
 })->name('home');
+
+
 
 
 
