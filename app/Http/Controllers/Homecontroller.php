@@ -27,13 +27,11 @@ class HomeController extends Controller
         $this->data['errorMessage'] = 'Vui lòng nhập thông tin  ';
         return view('client.add', $this->data);
     }
-    public function postAdd(Request $request)
+    public function postAdd(ProductRequest $request)
     {
 
         $rules = [
-            'product_name' => ['required', 'min:6', function ($attribute, $value, $fail) {
-                isUppercase($value, $fail, 'Trường :attribute không hợp lệ');
-            }],
+            'product_name' => ['required', 'min:6'],
             'product_price' => ['required', 'integer']
         ];
         // $message = [
@@ -52,18 +50,22 @@ class HomeController extends Controller
             'product_name' => 'Tên sản phẩm',
             'product_price'=> 'Giá sản phẩm'
         ];
+// $validator =  Validator::make($request->all(), $rules, $message, $attribute);
+        // $validator->validate();
+       // $request->validate($rules,$message);
+       return response()->json(['status'=>'success']);
 
-        $validator =  Validator::make($request->all(), $rules, $message,$attribute);
-        $validator -> validate();
-        if ($validator->fails()) {
-            $validator->errors()->add('msg', 'Vui lòng kiểm tra dữ liệu');
+        // $validator->validate();
+        // if ($validator->fails()) {
+        //     $validator->errors()->add('msg', 'Vui lòng kiểm tra dữ liệu');
             //return 'Thất bại';
-        } else {
-           // return 'Thành công';
-           return redirect()->route('product')->with('msg', 'Validate thành công');
-        };
+        // } else {
+            // return 'Thành công';
+        //     return redirect()->route('product')->with('msg', 'Validate thành công');
+        // };
 
-        return back()->withErrors($validator);
+        // return back()->withErrors($validator);
+
         // $request->validate($rules,$message);
         // Xử lý việc thêm dữ liệu vào database
     }

@@ -22,7 +22,6 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
             'product_name' => 'required|min:6',
             'product_price' => 'required|integer'
         ];

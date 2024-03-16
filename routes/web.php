@@ -30,6 +30,10 @@ Route::get('/san-pham', [HomeController::class, 'products'])->name('product');
 Route::get('/them-san-pham', [HomeController::class, 'getProducts'])->name('addproduct');
 Route::post('/them-san-pham', [HomeController::class, 'postProducts']);
 Route::put('/them-san-pham', [HomeController::class, 'putProducts']);
+Route::post('/them-san-pham',[HomeController::class,'postAdd'])->name('post-add');
+Route::get('/them-san-pham', [HomeController::class, 'getAdd']);
+Route::put('/them-san-pham', [HomeController::class, 'putAdd']);
+
 // Route::get('/demo-response', function () {
 //     $contentArr = [
 //         'name' => 'Laravel',
