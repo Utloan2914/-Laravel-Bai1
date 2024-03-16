@@ -41,3 +41,9 @@
 @endsection
 
 
+
+
+{{-- Bai tập 14/3 --}}
+{{-- <h1>{{$title}}</h1>
+@include('shared.notify') --}}
+

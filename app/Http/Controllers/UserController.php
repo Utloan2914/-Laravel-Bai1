@@ -22,7 +22,7 @@ class UserController extends Controller
    {
       $title = 'Thêm người dùng';
 
-      return view('client.users.add', compact('title'));
+      return view('clients.users.add', compact('title'));
    }
    public function postAdd(Request $request)
    {

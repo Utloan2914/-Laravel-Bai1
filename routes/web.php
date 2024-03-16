@@ -66,8 +66,14 @@ Route::prefix('/users')->name('users.')->group(function(){
 //     return view('home',['name'=>"Hello, Loan huynh"]);
 // })->name('home');
 
-Route::get('/pnv1', function () {
-    return view('home', ['name' => "<span><i style='color:blue'>Loan</i></span>"]);
-})->name('home');
+// Route::get('/pnv1', function () {
+//     return view('home', ['name' => "<span><i style='color:blue'>Loan</i></span>"]);
+// })->name('home');
+
+
+//Bài tập ngày 14/3
+// Route::get('/alert', function () {
+//     return view('home', ['title' => 'Toidicode.com', 'alertMessage' => 'Thong bao dayaaa']);
+// })->name('home');
 
 
