@@ -29,9 +29,12 @@ class HomeController extends Controller
     }
     public function postAdd(Request $request)
     {
+
         $rules = [
-           'product_name' => ['required','min:6',new Uppercase],
-            'product_price' => ['required','integer',new Uppercase]
+            'product_name' => ['required', 'min:6', function ($attribute, $value, $fail) {
+                isUppercase($value, $fail, 'Trường :attribute không hợp lệ');
+            }],
+            'product_price' => ['required', 'integer']
         ];
         // $message = [
         //     'product_name.required' => 'Tên sản phẩm bắt buộc phải nhập',
@@ -49,17 +52,18 @@ class HomeController extends Controller
             'product_name' => 'Tên sản phẩm',
             'product_price'=> 'Giá sản phẩm'
         ];
+
         $validator =  Validator::make($request->all(), $rules, $message,$attribute);
         $validator -> validate();
         if ($validator->fails()) {
-            $validator->errors()->add('msg','Vui lòng kiểm tra dữ liệu');
+            $validator->errors()->add('msg', 'Vui lòng kiểm tra dữ liệu');
             //return 'Thất bại';
         } else {
            // return 'Thành công';
-           return redirect()->route('product')->with('msg','Validate thành công');
+           return redirect()->route('product')->with('msg', 'Validate thành công');
         };
 
-        return back()->withErrors( $validator);
+        return back()->withErrors($validator);
         // $request->validate($rules,$message);
         // Xử lý việc thêm dữ liệu vào database
     }
