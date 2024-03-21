@@ -33,9 +33,9 @@ class Users extends Model
     public function learnQueryBuilder(){
         DB::enableQueryLog();
         //lấy tất cả bảng ghi của table
-        $id=20;
-        $lists=DB::table($this->table)
-        ->select('fullname as hoten','email','id','update_at')
+        // $id=20;
+        // $lists=DB::table($this->table)
+        // ->select('fullname as hoten','email','id','update_at','create_at')
         // ->where('id',18)
         // ->where(function($query) use ($id){
         //     $query->where('id','<',$id)->orWhere('id','>',$id);
@@ -47,9 +47,16 @@ class Users extends Model
         // ->whereIn('id', [18,20])
         // ->whereNotIn('id', [18,20])
         // ->whereNull('update_at')
-        ->whereNotNull('update_at')
-        ->get();
+        //->whereNotNull('update_at')
+        //->whereYear('create_at','2021')
+        // ->whereColumn('create_at','<>QQ','update_at')
+        // ->get();
         //->toSql();
+        //join bảng
+       $lists= DB::table('users')
+       ->select('users.*','groups.name as group_name')
+       ->rightJoin('groups','users.group_id','=','groups.id')
+        ->get();
         dd($lists);
         $sql=DB::getQueryLog();
         dd($sql);
