@@ -1,1 +1,1 @@
-<h3>Main Sidebar</h3>
+<h3>Main sidebar</h3>

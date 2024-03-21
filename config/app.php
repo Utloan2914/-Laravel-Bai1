@@ -154,12 +154,12 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
-    'providers' => [
-        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
+
+    'providers' => ServiceProvider::defaultProviders()->merge([
         /*
          * Package Service Providers...
          */
-    
+
         /*
          * Application Service Providers...
          */
@@ -168,8 +168,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-    ],
-    
+    ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------

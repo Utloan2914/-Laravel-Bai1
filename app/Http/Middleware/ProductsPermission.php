@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthAPI
+class ProductsPermission
 {
     /**
      * Handle an incoming request.
@@ -15,6 +15,7 @@ class AuthAPI
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // echo "Request products admin";
         return $next($request);
     }
 }

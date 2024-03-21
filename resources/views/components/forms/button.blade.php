@@ -1,1 +1,1 @@
-<button type="btn btn-success ">Order now</button>
+<button class="btn btn-danger">Đăng ký ngay</button>
