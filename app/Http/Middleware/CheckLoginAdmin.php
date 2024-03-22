@@ -13,27 +13,6 @@ class CheckLoginAdmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-<<<<<<< HEAD
-    public function handle(Request $request, Closure $next)
-    {
-        // echo 'Middleware Request';
-        if (!$this->isLogin()){
-            return redirect(route('home'));
-        }
-
-        // if($request->is('admin')){
-        //     echo 'Admin Area';
-        // }
-
-
-        return $next($request);
-    }
-
-    public function isLogin (){
-        return true;
-    }
-
-=======
     public function handle(Request $request, Closure $next): Response
     {
         if (!$this->isLogin()){
@@ -47,5 +26,4 @@ class CheckLoginAdmin
     public function isLogin(){
         return true;
     }
->>>>>>> Laravel-Bai34
 }
