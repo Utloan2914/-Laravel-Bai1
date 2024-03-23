@@ -53,7 +53,7 @@ class Users extends Model
         // ->get();
         //->toSql();
         //join bảng
-       $lists= DB::table('users')
+       //$lists= DB::table('users');
        //->select('users.*','groups.name as group_name')
        //->rightJoin('groups','users.group_id','=','groups.id')
         // ->orderBy('create_at','asc')
@@ -65,11 +65,48 @@ class Users extends Model
         //->having('email_count','>=',2)
     //    ->limit(2)
     //    ->offset(2)
-    ->take(2)
-    ->skip(2)
-       ->get();
+    // ->take(2)
+    // ->skip(2)
+    //    ->get();
 
-        dd($lists);
+        //dd($lists);
+        // $status = DB::table('users')->insert(
+        //     [
+        //         'fullname'=>'Nguyễn Văn A',
+        //         'email'=>'nguyenvana@gmail.com',
+        //         'group-id'=>1,
+        //         'create_at'=> date('Y-m-d H:i:s')
+        //     ]
+        // );
+        //dd($status);
+        //$lastId= DB::getPdo()->lastInsertId();
+            // $lastId = DB::table('users')->insertGetId([
+            //     'fullname'=>'Nguyễn Văn A',
+            //     'email'=>'nguyenvana@gmail.com',
+            //     'group-id'=>1,
+            //     'create_at'=> date('Y-m-d H:i:s')
+            // ]);
+            // dd($lastId);
+        // $status = DB::table('users')
+        // ->where('id', 29)
+        // ->update([
+        //     'fullname'=>'Huỳnh Thị Tố Loan',
+        //     'email'=>'loan.huynh25@student.passerellesnumeriques.org',
+        //     'update_at' => date('Y-m-d H:i:s')
+        // ]);
+
+        // $status = DB::table('users')
+        // ->where('id',28)
+        // ->delete();
+
+        //Đếm số bản ghi
+        //$count= DB::table('usets')->where('id','>',20)->count();
+
+        //list chạy sẽ là 2,65, còn có đầy đủ là 16,32
+        $list= DB::table('usets')->where('id','>',20)->get();
+        $count = count($list);
+        dd($count);
+
         $sql=DB::getQueryLog();
         dd($sql);
         //Lấy 1 bản ghi đầu tiên của table
