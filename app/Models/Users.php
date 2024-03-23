@@ -103,13 +103,41 @@ class Users extends Model
         //$count= DB::table('usets')->where('id','>',20)->count();
 
         //list chạy sẽ là 2,65, còn có đầy đủ là 16,32
-        $list= DB::table('usets')->where('id','>',20)->get();
-        $count = count($list);
-        dd($count);
+        // $list= DB::table('usets')->where('id','>',20)->get();
+        // $count = count($list);
+        // dd($count);
 
+        $list=DB::table('users')
+        //->selectRaw('email, fullname, count(id) as email_count')
+        // ->groupBy('email')
+        // ->groupBy('fullname')
+
+        //->where(DB::raw('id>20'))
+        //->where('id','>',20)
+        //->orWhereRaw('id > 20')
+        //->orderByRaw('create_at DESC, update_at ASC')
+        //->orderBy(DB::raw('create_at DESC, update_at ASC'))
+        //->groupByRaw('email, fullname')
+        //->having('email_count', '>=',2)
+        //->havingRaw('count(id) > ?', [2])
+        // ->where('group_id',
+        //         '=',
+        //         function($query){
+        //             $query->select('*')
+        //             ->from('group')
+        //             ->where('name','=','Administrator');
+        //         }
+        // )
+        //cách 1
+        //->select('email',DB::raw('(SELECT count(id) FROM `groups`) as group_count'))
+        //cách 2
+        ->select('email,(SELECT count(id) FROM `groups`) as group_count')
+        ->get();
+        dd($list);
         $sql=DB::getQueryLog();
         dd($sql);
         //Lấy 1 bản ghi đầu tiên của table
        $detail=DB::table($this->table)->first();
     }
 }
+//Đề xuất bài học max tại #Aggregates
