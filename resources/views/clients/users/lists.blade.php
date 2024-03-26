@@ -15,8 +15,10 @@
     <thead>
         <tr>
             <th width='5%'>STT</th>
-            <th>Tên</th>
+            <th><a href="#">Tên</a></th>
             <th>Email</th>
+            <th>Nhóm</th>
+            <th>Trạng thái</th>
             <th width='15%'>Thời gian</th>
             <th width='5%'>Sửa</th>
             <th width='5%'>Xóa</th>

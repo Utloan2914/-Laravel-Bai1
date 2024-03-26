@@ -28,9 +28,35 @@ class UserController extends Controller
       if (!empty($request->group_id)) {
          $groupId = $request->group_id;
 
-         $filter[] = ['users.group_id', '=', $$groupId];
+         $filter[] = ['users.group_id', '=', $groupId];
       }
-      $userList = $this->users->getAllUser($filter);
+
+      if (!empty($request->keywords)) {
+        $keywords = $request->keywords;
+      }
+      //Xử lý logic sắp xếp
+      $sortBy = $request->input('sort-by');
+      $sortType=$request->input('sort-type');
+      $allowSort =['asc','desc'];
+
+      if (!empty($sortType) && in_array($sortType, $allowSort)) {
+        if($sortType=='desc'){
+            $sortType = 'asc';
+          }
+          else{
+            $sortType='desc';
+          }
+      }
+
+      else{
+        $sortType= 'asc';
+      }
+      $sortArr=[
+        'sortBy' => $sortBy,
+        'sortType'=>$sortType
+      ];
+      $userList = $this->users->getAllUser($filter, $keywords, $sortBy);
+      return view('clients.users.lists', compact('title','usersList'));
 
    }
    public function add()
