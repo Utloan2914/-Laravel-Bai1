@@ -5,7 +5,7 @@
 
 @section('content')
     @if (session('msg'))
-       <div>{{session('msg')}}</div> 
+       <div>{{session('msg')}}</div>
     @endif
     <h1>{{$title}}</h1>
     <table class="table table-bordered">
@@ -34,5 +34,5 @@
             @endif
         </tbody>
     </table>
-   
+
 @endsection
