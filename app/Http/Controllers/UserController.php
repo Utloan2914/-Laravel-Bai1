@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
    private $users;
+   const _PER_PAGE =3;
    public function __construct()
    {
       $this->users = new Users();
@@ -55,7 +56,7 @@ class UserController extends Controller
         'sortBy' => $sortBy,
         'sortType'=>$sortType
       ];
-      $userList = $this->users->getAllUser($filter, $keywords, $sortBy);
+      $userList = $this->users->getAllUser($filter, $keywords, $sortArr, self::_PER_PAGE);
       return view('clients.users.lists', compact('title','usersList'));
 
    }

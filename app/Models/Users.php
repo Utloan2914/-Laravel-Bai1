@@ -10,7 +10,8 @@ class Users extends Model
 {
     use HasFactory;
     protected $table = 'users';
-    public function getAllUser($filter = [],$keywords = null, $sortBy = null)
+    public function getAllUser($filter = [],$keywords = null, $sortByArr = null,
+    $perPage=null)
     { // $users = DB::select('SELECT * from users ORDER BY create_at DESC');
         $users = DB::table($this->table)
         ->select('users.*','groups.name as group_name')
@@ -29,7 +30,13 @@ class Users extends Model
         if (!empty($filter)){
             $users = $users->where($filter);
         }
-        $users = $users->get();
+
+
+        if (!empty($perPage)){
+            $users = $users -> paginate($perPage); //$perPage bản ghi trên 1 trang
+        }else{
+            $users = $users->get();
+        }
         return $users;
     }
     public function addUser($data)
