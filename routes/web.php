@@ -14,6 +14,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MyController;
 use Illuminate\Mail\Mailables\Content;
 use PhpParser\Node\Stmt\Return_;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,4 +71,6 @@ Route::get('/pnv1', function () {
     return view('home', ['name' => "<span><i style='color:blue'>Loan</i></span>"]);
 })->name('home');
 
-
+Route::prefix('posts')->name('posts.')->group(function () {
+     Route::get('/', [PostController::class, 'index'])->name('index');
+    });
